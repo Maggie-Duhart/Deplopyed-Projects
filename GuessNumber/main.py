@@ -22,7 +22,7 @@ def easy_level():
             print("Too high")
         attempts -= 1
 
-        if attempts == 0:
+        if attempts == 0 and guess != guess_num:
             print("You've run out of guesses, you lose. ")
             guessing = False
 
@@ -45,7 +45,7 @@ def hard_level():
             print("Too high")
         attempts -= 1
 
-        if attempts == 0:
+        if attempts == 0 and guess != guess_num:
             print("You've run out of guesses, you lose. ")
             guessing = False
 
@@ -53,11 +53,16 @@ def hard_level():
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
 
-print(f"Pssst, the correct answer is {guess_num}")
+game_on = True
+while game_on:
 
-level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    level = input("Choose a difficulty. Type 'easy' or 'hard': ")
 
-if level == "easy":
-    easy_level()
-else:
-    hard_level()
+    if level == "easy":
+        easy_level()
+        game_on = False
+    elif level == "hard":
+        hard_level()
+        game_on = False
+    else:
+        print("That's not a valid option")
